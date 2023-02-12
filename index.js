@@ -24,8 +24,8 @@ function getMeteo() {
   fetch(urlApiMeteo)
     .then(response => response.json())
     .then(data => {
-      sunset = data.daily.sunset[0]
-      sunrise = data.daily.sunrise[0]
+      sunset = new Date(data.daily.sunset[0]).getHours()
+      sunrise = new Date(data.daily.sunrise[0]).getHours()
     })
     .catch(error => alert("Erreur : " + error));
 }
