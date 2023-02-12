@@ -1,107 +1,32 @@
 let today = new Date();
+let bonText = "Bonjour"
+let sunset = 0
+let sunrise = 0
 
-console.log("Date d'aurjoudui : ",today);
+const bonTextEnum = {
+  Bonjour: "Bonjour",
+  Bonsoir: "Bonsoir"
+}
 
-console.log('saison',getCurrentSeason());
+// Init 
+document.getElementById("bonText").innerHTML = bonText;
+getMeteo();
 
- 
+if (today.getHours() >= sunset && today.getHours() <= sunrise) {
+  bonText = bonTextEnum.Bonsoir
+}
 
-/**
+document.getElementById("bonText").innerHTML = bonText;
 
- * Retrieves the current season: 1) summer, 2) winter, 3) fall or 4) spring
+function getMeteo() {
+  const urlApiMeteo = 'https://api.open-meteo.com/v1/meteofrance?latitude=48.85&longitude=2.35&hourly=temperature_2m&daily=sunrise,sunset&timezone=auto'
 
- *
+  fetch(urlApiMeteo)
+    .then(response => response.json())
+    .then(data => {
+      sunset = data.daily.sunset[0]
+      sunrise = data.daily.sunrise[0]
+    })
+    .catch(error => alert("Erreur : " + error));
+}
 
- * Winter:  22 Dec - 21 Mar
-
- * Spring:  22 Mar - 21 Jun
-
- * Summer:  22 Jun - 21 Sep
-
- * Fall:    22 Sep - 21 Dec
-
- */
-
- function getCurrentSeason() {
-
-    // It's plus one because January is index 0
-
-    const now = new Date();
-
-    const month = now.getMonth() + 1;
-
- 
-
-    if (month > 3 && month < 6) {
-
-      return 'printemps';
-
-    }
-
- 
-
-    if (month > 6 && month < 9) {
-
-      return 'été';
-
-    }
-
- 
-
-    if (month > 9 && month < 12) {
-
-      return 'automne';
-
-    }
-
- 
-
-    if (month >= 1 && month < 3) {
-
-      return 'hiver';
-
-    }
-
- 
-
-    const day = now.getDate();
-
-    if (month === 3) {
-
-      return day < 22 ? 'hiver' : 'printemps';
-
-    }
-
- 
-
-    if (month === 6) {
-
-      return day < 22 ? 'printemps' : 'été';
-
-    }
-
- 
-
-    if (month === 9) {
-
-      return day < 22 ? 'été' : 'automne';
-
-    }
-
- 
-
-    if (month === 12) {
-
-      return day < 22 ? 'automne' : 'hiver';
-
-    }
-
- 
-
-    console.error('Unable to calculate current season');
-
-  }
-
- 
-
-//   https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=sunrise,sunset&timezone=auto
