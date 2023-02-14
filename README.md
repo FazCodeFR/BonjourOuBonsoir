@@ -30,3 +30,4 @@ This project is open source and freely available for anyone to use and modify.
 ## Authors
 
 - [@FazCodeFR](https://www.github.com/FazCodeFR)
+- [@DiamoonWolf](https://github.com/DiamoonWolf)

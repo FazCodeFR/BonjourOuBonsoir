@@ -1,34 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 body {
-font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: rgb(253, 209, 120);
     background: linear-gradient(0deg, rgba(253, 209, 120, 0.473) 0%, rgba(123, 198, 245, 0.479) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    
-
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
     color: #333;
+    overflow: hidden;
+}
 
-    
-  }
-
-  h1 {
+h1 {
     text-align: center;
     font-size: 36px;
     margin-top: 50px;
-  }
+}
 
-  .aligncenter {
-    
-
+.aligncenter {
     text-align: center;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.308);
@@ -36,66 +30,59 @@ font-family: 'Open Sans', sans-serif;
     border-color: rgba(238, 238, 238, 0.336);
     border-style: solid;
     border-width: 1px;
-
     backdrop-filter: blur( 7.5px );
     -webkit-backdrop-filter: blur( 7.5px );
+}
 
+.corner-image {
 
-  }
-
-
-  
-  .corner-image {
     position: absolute;
     left: -20px;
     top: -35px;
     width: 80px;
     height: 80px;
-  }
+    display: inline-block;
+    margin-top: 20px;
+}
 
-  h2 {
+h2 {
     font-size: 24px;
-    margin-top: 30px;
-  }
+}
 
-  .bonText {
+#bonText {
     background-color: rgba(248, 248, 32, 0.836);
     padding: 5px;
     border-radius: 4px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  img {
-    display: inline-block;
-    margin-top: 20px;
-  }
 
-  .share {
+.share {
     margin-top: 30vh;
-  }
+}
 
-  a {
+a {
     color: #4d4dff;
-    margin-right: 20px;
-    
     font-size: 18px;
+    margin: 0,5em;
     text-decoration: none;
-  }
+}
 
-  @media (max-width: 768px) {
+
+@media only screen and (max-width: 768px) {
     h1 {
-      font-size: 28px;
+        font-size: 28px;
     }
-
     h2 {
-      font-size: 18px;
+        font-size: 18px;
     }
-
     img {
-      width: 15px;
+        width: 30px;
     }
-
     a {
-      font-size: 14px;
+        font-size: 14px;
     }
-  }
+    .aligncenter {
+        padding: 40px;
+    }
+}

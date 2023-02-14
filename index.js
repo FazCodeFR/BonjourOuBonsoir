@@ -1,4 +1,4 @@
-let today = new Date();
+let today = new Date()
 let bonText = "Bonjour"
 
 const bonTextEnum = {
@@ -7,7 +7,7 @@ const bonTextEnum = {
 }
 
 // Init 
-document.getElementById("bonText").innerHTML = bonText;
+document.getElementById("bonText").innerHTML = bonText
 
 
 
@@ -36,5 +36,5 @@ function calcul(heureMatin, heureSoir) {
   else {
     bonText = bonTextEnum.Bonsoir
   }
-  document.getElementById("bonText").innerHTML = bonText;
+  document.getElementById("bonText").innerHTML = bonText
 }
