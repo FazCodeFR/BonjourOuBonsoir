@@ -30,7 +30,7 @@ function getMeteo() {
 }
 
 function calcul(heureMatin, heureSoir) {
-  if (heureMatin >= today.getHours() && today.getHours() <= heureSoir) {
+  if (today.getHours() >= heureMatin && today.getHours() <= heureSoir) {
     bonText = bonTextEnum.Bonjour
   }
   else {
