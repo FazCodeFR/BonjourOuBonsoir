@@ -5,6 +5,8 @@ const bonTextEnum = {
   Bonsoir: "Bonsoir"
 };
 
+const today = new Date();
+
 // Init 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
