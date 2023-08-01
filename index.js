@@ -1,55 +1,57 @@
-let today = new Date()
-let bonText = "Bonjour"
+let bonText = "Bonjour";
 
 const bonTextEnum = {
   Bonjour: "Bonjour",
   Bonsoir: "Bonsoir"
-}
+};
 
 // Init 
-document.getElementById("bonText").innerHTML = bonText
-
-initServiceWorker()
-
-// futur Feature 
-//getMeteo();
-
-calcul(6, 18)
-
-function getMeteo() {
-  const urlApiMeteo = 'https://api.open-meteo.com/v1/meteofrance?latitude=48.85&longitude=2.35&hourly=temperature_2m&daily=sunrise,sunset&timezone=auto'
-
-  fetch(urlApiMeteo)
-    .then(response => response.json())
-    .then(data => {
-      calcul(new Date(data.daily.sunrise[0]).getHours(), new Date(data.daily.sunset[0]).getHours());
-    })
-    .catch(error =>
-      calcul(6, 18)
-    );
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('./service-worker.js')
+      .then(registration => {
+        console.log('Service worker registered!', registration);
+      })
+      .catch(error => {
+        console.error('Error registering service worker:', error);
+      });
+  });
 }
 
-function calcul(heureMatin, heureSoir) {
+document.getElementById("bonText").innerHTML = bonText;
+
+initServiceWorker();
+calcul();
+
+function calcul() {
+  let heureMatin = 6;
+  let heureSoir = 18;
+
+  // Obtenir les heures de lever et de coucher du soleil depuis l'API météo
+  // Ici, on utilise les valeurs par défaut pour heureMatin et heureSoir en cas d'erreur API
+  // Dans une version future, vous pouvez implémenter la récupération des heures de lever et de coucher du soleil depuis l'API météo.
+  // Pour le moment, on utilise les valeurs par défaut (6h et 18h) pour simuler le calcul.
+
+  // getMeteo()
+  //   .then(data => {
+  //     heureMatin = new Date(data.daily.sunrise[0]).getHours();
+  //     heureSoir = new Date(data.daily.sunset[0]).getHours();
+  //     updateBonText(heureMatin, heureSoir);
+  //   })
+  //   .catch(error => {
+  //     updateBonText(heureMatin, heureSoir);
+  //   });
+
+  // Utilisation des valeurs par défaut (6h et 18h) pour simuler le calcul sans API météo.
+  updateBonText(heureMatin, heureSoir);
+}
+
+function updateBonText(heureMatin, heureSoir) {
   if (today.getHours() >= heureMatin && today.getHours() <= heureSoir) {
-    bonText = bonTextEnum.Bonjour
+    bonText = bonTextEnum.Bonjour;
+  } else {
+    bonText = bonTextEnum.Bonsoir;
   }
-  else {
-    bonText = bonTextEnum.Bonsoir
-  }
-  document.getElementById("bonText").innerHTML = bonText
-}
-
-function initServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker
-        .register('./service-worker.js')
-        .then(registration => {
-          console.log('Service worker registered!', registration);
-        })
-        .catch(error => {
-          console.error('Error registering service worker:', error);
-        });
-    });
-  }
+  document.getElementById("bonText").innerHTML = bonText;
 }
