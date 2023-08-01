@@ -18,10 +18,8 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
-
 document.getElementById("bonText").innerHTML = bonText;
 
-initServiceWorker();
 calcul();
 
 function calcul() {
