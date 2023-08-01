@@ -1,7 +1,7 @@
 {
-    "name": "Bonjour ou bonsoir ???",
-    "short_name": "BonjourBonsoir",
-    "start_url": "./index.html",
+    "name": "Bonjour ou bonsoir ?",
+    "short_name": "BonjourOuBonsoir",
+    "start_url": "./",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
