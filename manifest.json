@@ -1,0 +1,20 @@
+{
+    "name": "Bonjour ou bonsoir ???",
+    "short_name": "BonjourBonsoir",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "./croissant.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "./croissant.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+}
