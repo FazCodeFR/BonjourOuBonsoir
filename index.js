@@ -1,13 +1,31 @@
-let bonText = "Bonjour";
-
 const bonTextEnum = {
   Bonjour: "Bonjour",
   Bonsoir: "Bonsoir"
 };
-
+const heureMatin = 6;
+const heureSoir = 18;
 const today = new Date();
+let bonText = bonTextEnum.Bonjour;
 
-// Init 
+updateBonText(heureMatin, heureSoir);
+
+// Call updateBonText every 3 minutes
+setInterval(() => {
+  updateBonText(heureMatin, heureSoir);
+}, 3 * 60 * 1000); // 3 minutes in milliseconds
+
+
+function updateBonText(heureMatin, heureSoir) {
+  bonText = (today.getHours() >= heureMatin && today.getHours() <= heureSoir)
+    ? bonTextEnum.Bonjour
+    : bonTextEnum.Bonsoir;
+
+  document.getElementById("bonText").textContent = bonText;
+}
+
+
+
+// Register service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
@@ -20,13 +38,7 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
-document.getElementById("bonText").innerHTML = bonText;
 
-calcul();
-
-function calcul() {
-  let heureMatin = 6;
-  let heureSoir = 18;
 
   // Obtenir les heures de lever et de coucher du soleil depuis l'API météo
   // Ici, on utilise les valeurs par défaut pour heureMatin et heureSoir en cas d'erreur API
@@ -42,16 +54,3 @@ function calcul() {
   //   .catch(error => {
   //     updateBonText(heureMatin, heureSoir);
   //   });
-
-  // Utilisation des valeurs par défaut (6h et 18h) pour simuler le calcul sans API météo.
-  updateBonText(heureMatin, heureSoir);
-}
-
-function updateBonText(heureMatin, heureSoir) {
-  if (today.getHours() >= heureMatin && today.getHours() <= heureSoir) {
-    bonText = bonTextEnum.Bonjour;
-  } else {
-    bonText = bonTextEnum.Bonsoir;
-  }
-  document.getElementById("bonText").innerHTML = bonText;
-}
