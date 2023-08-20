@@ -4,25 +4,40 @@ const bonTextEnum = {
 };
 const heureMatin = 6;
 const heureSoir = 18;
-const today = new Date();
-let bonText = bonTextEnum.Bonjour;
 
-updateBonText(heureMatin, heureSoir);
+// Call updateBonText immediately and then every 3 minutes
+updateBonText();
 
-// Call updateBonText every 3 minutes
 setInterval(() => {
-  updateBonText(heureMatin, heureSoir);
+  updateBonText();
 }, 3 * 60 * 1000); // 3 minutes in milliseconds
 
+function updateBonText() {
+  const today = new Date(); // Get the current time
 
-function updateBonText(heureMatin, heureSoir) {
-  bonText = (today.getHours() >= heureMatin && today.getHours() <= heureSoir)
-    ? bonTextEnum.Bonjour
-    : bonTextEnum.Bonsoir;
+  const bonTextEnum = {
+    Bonjour: "Bonjour",
+    Bonsoir: "Bonsoir"
+  };
+  const heureMatin = 6;
+  const heureSoir = 18;
 
-  document.getElementById("bonText").textContent = bonText;
+  // Call updateBonText immediately and then every 3 minutes
+  updateBonText();
+
+  setInterval(() => {
+    updateBonText();
+  }, 3 * 60 * 1000); // 3 minutes in milliseconds
+
+  function updateBonText() {
+    const today = new Date(); // Get the current time
+
+    const bonText = (today.getHours() >= heureMatin && today.getHours() < heureSoir)
+      ? bonTextEnum.Bonjour
+      : bonTextEnum.Bonsoir;
+    document.getElementById("bonText").textContent = bonText;
+  }
 }
-
 
 
 // Register service worker
