@@ -119,14 +119,18 @@
     ]
   }
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDNWEF5QN8"></script>
+  <!-- Google tag (gtag.js) - deferred until after page load -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-FDNWEF5QN8');
+    window.addEventListener('load', function () {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-FDNWEF5QN8';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-FDNWEF5QN8');
+    });
   </script>
 
 </head>
@@ -138,7 +142,7 @@
       <button type="button" data-lang="fr" aria-pressed="true">FR</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
-    <img src="./croissant.webp" class="corner-image" alt="" width="200" height="200">
+    <img src="./croissant.webp" class="corner-image" alt="" width="200" height="200" fetchpriority="high">
     <h1 data-i18n="h1">Bonjour ou bonsoir&nbsp;?</h1>
 
     <h2 data-i18n="intro">À cette heure en France, il est préférable de dire&nbsp;:</h2>
