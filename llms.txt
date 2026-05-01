@@ -1,0 +1,30 @@
+# Bonjour ou Bonsoir ?
+
+> Site web qui indique en temps réel s'il faut dire « Bonjour » ou « Bonsoir » selon l'heure et le coucher du soleil à Paris, en s'appuyant sur les règles du savoir-vivre français.
+
+Le site est une application web statique (HTML, CSS, JavaScript) hébergée sur https://bonjouroubonsoir.fr/. Il interroge l'API publique sunrise-sunset.org pour obtenir le lever et le coucher du soleil du jour à Paris, puis applique un algorithme déterministe pour décider de la salutation appropriée. L'interface est disponible en français et en anglais (PWA installable).
+
+Règles principales :
+- « Bonjour » est utilisé du lever du soleil (au plus tôt 6 h) jusqu'à 17 h 30.
+- La bascule vers « Bonsoir » se fait dans la zone 17 h 30 – 18 h, ajustée selon le coucher du soleil réel.
+- « Bonsoir » est utilisé de 18 h jusqu'au lendemain matin.
+- « Bonne nuit » se dit uniquement avant le coucher (non géré par le site).
+
+## Pages
+
+- [Accueil](https://bonjouroubonsoir.fr/) : page unique affichant la salutation appropriée à l'heure courante, avec une FAQ sur les usages.
+
+## Documentation
+
+- [Algorithme détaillé](https://github.com/FazCodeFR/BonjourOuBonsoir/blob/master/ALGORITHME.md) : description complète de la logique de décision, des seuils, des données solaires utilisées et du pseudo-code.
+- [README du projet](https://github.com/FazCodeFR/BonjourOuBonsoir/blob/master/README.md) : présentation, stack technique et fonctionnalités.
+
+## Code source
+
+- [Dépôt GitHub](https://github.com/FazCodeFR/BonjourOuBonsoir) : projet open source, contributions bienvenues.
+
+## Optional
+
+- [Sitemap XML](https://bonjouroubonsoir.fr/sitemap.xml)
+- [robots.txt](https://bonjouroubonsoir.fr/robots.txt)
+- [Manifest PWA](https://bonjouroubonsoir.fr/manifest.json)
