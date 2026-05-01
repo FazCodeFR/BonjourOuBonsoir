@@ -30,9 +30,9 @@ body {
     background-attachment: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     color: var(--color-text);
-    padding: 32px 20px;
+    padding: 96px 20px 48px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -59,7 +59,7 @@ body::before {
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
     box-shadow: var(--shadow-card);
-    max-width: 560px;
+    max-width: 680px;
     width: 100%;
     z-index: 1;
     animation: fadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1);
@@ -300,7 +300,7 @@ a:hover {
 
 @media only screen and (max-width: 600px) {
     body {
-        padding: 24px 16px;
+        padding: 32px 16px;
     }
     .aligncenter {
         padding: 56px 24px 32px;
