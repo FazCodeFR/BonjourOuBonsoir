@@ -7,25 +7,25 @@
     "theme_color": "#ffffff",
     "icons": [
       {
-        "src": "./croissant.png",
+        "src": "./croissant.webp",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
       },
       {
-        "src": "./croissant.png",
+        "src": "./croissant.webp",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"
       },
       {
-        "src": "./maskable_croissant.png",
+        "src": "./maskable_croissant.webp",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "maskable"
       },
       {
-        "src": "./maskable_croissant.png",
+        "src": "./maskable_croissant.webp",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "maskable"
