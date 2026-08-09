@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title data-i18n="titlePage">Faut-il dire bonjour ou bonsoir ?</title>
+  <title>Faut-il dire bonjour ou bonsoir ?</title>
   <meta name="author" content="Fazcode" />
   <link rel="apple-touch-icon" href="./croissant.webp" />
   <link rel="icon" type="image/png" href="./croissant.webp" />
@@ -11,7 +11,7 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://bonjouroubonsoir.fr/" />
   <link rel="alternate" hreflang="fr" href="https://bonjouroubonsoir.fr/" />
-  <link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/?lang=en" />
+  <link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/en/" />
   <link rel="alternate" hreflang="x-default" href="https://bonjouroubonsoir.fr/" />
   <link rel="preload" as="image" href="./croissant.webp" />
   <meta name="description"
@@ -27,6 +27,8 @@
   <meta property="og:description"
     content="Faut-il dire bonjour ou bonsoir maintenant ? Réponse en temps réel selon l'heure et le coucher du soleil, basée sur les règles du savoir-vivre français." />
   <meta property="og:image" content="https://bonjouroubonsoir.fr/croissant.webp" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
 
   <!-- Adding metadata for the PWA  -->
   <meta name="theme-color" content="#ffffff">
@@ -67,6 +69,7 @@
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "inLanguage": "fr-FR",
     "mainEntity": [
       {
         "@type": "Question",
@@ -139,67 +142,67 @@
 
   <main class="aligncenter">
     <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <a href="./" aria-current="page">FR</a>
+      <a href="./en/">EN</a>
     </div>
     <img src="./croissant.webp" class="corner-image" alt="" width="200" height="200" fetchpriority="high">
-    <h1 data-i18n="h1">Bonjour ou bonsoir&nbsp;?</h1>
+    <h1>Bonjour ou bonsoir&nbsp;?</h1>
 
-    <h2 data-i18n="intro">À cette heure en France, il est préférable de dire&nbsp;:</h2>
+    <h2>À cette heure en France, il est préférable de dire&nbsp;:</h2>
     <time><strong id="bonText">Bonjour</strong></time>
 
     <section class="faq" aria-labelledby="faq-title">
-      <h2 id="faq-title" data-i18n="faqTitle">Quand dire bonjour ou bonsoir&nbsp;?</h2>
+      <h2 id="faq-title">Quand dire bonjour ou bonsoir&nbsp;?</h2>
 
       <details>
-        <summary data-i18n="faqQ1">À partir de quelle heure dit-on bonsoir&nbsp;?</summary>
-        <p class="answer" data-i18n="faqA1">En France, on commence à dire «&nbsp;bonsoir&nbsp;» entre 17h30 et 18h selon la saison. En hiver, quand la nuit tombe vers 17h, on bascule dès 17h30&nbsp;; en été, on attend 18h car il fait encore jour.</p>
+        <summary>À partir de quelle heure dit-on bonsoir&nbsp;?</summary>
+        <p class="answer">En France, on commence à dire «&nbsp;bonsoir&nbsp;» entre 17h30 et 18h selon la saison. En hiver, quand la nuit tombe vers 17h, on bascule dès 17h30&nbsp;; en été, on attend 18h car il fait encore jour.</p>
       </details>
 
       <details>
-        <summary data-i18n="faqQ2">Jusqu'à quelle heure peut-on dire bonjour&nbsp;?</summary>
-        <p class="answer" data-i18n="faqA2">«&nbsp;Bonjour&nbsp;» reste correct jusqu'à 17h30 toute l'année. Au-delà, et au plus tard à 18h, «&nbsp;bonsoir&nbsp;» prend le relais. Cette zone de bascule est typique du savoir-vivre français.</p>
+        <summary>Jusqu'à quelle heure peut-on dire bonjour&nbsp;?</summary>
+        <p class="answer">«&nbsp;Bonjour&nbsp;» reste correct jusqu'à 17h30 toute l'année. Au-delà, et au plus tard à 18h, «&nbsp;bonsoir&nbsp;» prend le relais. Cette zone de bascule est typique du savoir-vivre français.</p>
       </details>
 
       <details>
-        <summary data-i18n="faqQ3">Peut-on dire bonjour à 17h&nbsp;?</summary>
-        <p class="answer" data-i18n="faqA3">Oui, sans hésiter. À 17h, l'usage est encore «&nbsp;bonjour&nbsp;» partout en France, quelle que soit la saison. La transition vers «&nbsp;bonsoir&nbsp;» ne commence qu'à partir de 17h30.</p>
+        <summary>Peut-on dire bonjour à 17h&nbsp;?</summary>
+        <p class="answer">Oui, sans hésiter. À 17h, l'usage est encore «&nbsp;bonjour&nbsp;» partout en France, quelle que soit la saison. La transition vers «&nbsp;bonsoir&nbsp;» ne commence qu'à partir de 17h30.</p>
       </details>
 
       <details>
-        <summary data-i18n="faqQ4">Quelle différence entre «&nbsp;bonsoir&nbsp;» et «&nbsp;bonne soirée&nbsp;»&nbsp;?</summary>
-        <p class="answer" data-i18n="faqA4">«&nbsp;Bonsoir&nbsp;» sert à saluer quelqu'un quand on le rencontre en fin de journée. «&nbsp;Bonne soirée&nbsp;» sert à prendre congé, en lui souhaitant une agréable fin de journée. On ne dit pas «&nbsp;bonne soirée&nbsp;» en arrivant.</p>
+        <summary>Quelle différence entre «&nbsp;bonsoir&nbsp;» et «&nbsp;bonne soirée&nbsp;»&nbsp;?</summary>
+        <p class="answer">«&nbsp;Bonsoir&nbsp;» sert à saluer quelqu'un quand on le rencontre en fin de journée. «&nbsp;Bonne soirée&nbsp;» sert à prendre congé, en lui souhaitant une agréable fin de journée. On ne dit pas «&nbsp;bonne soirée&nbsp;» en arrivant.</p>
       </details>
 
       <details>
-        <summary data-i18n="faqQ5">Quand dit-on «&nbsp;bonne nuit&nbsp;»&nbsp;?</summary>
-        <p class="answer" data-i18n="faqA5">«&nbsp;Bonne nuit&nbsp;» se dit uniquement juste avant que la personne aille se coucher. Ce n'est pas une salutation du soir&nbsp;: pour saluer en soirée, on dit «&nbsp;bonsoir&nbsp;».</p>
+        <summary>Quand dit-on «&nbsp;bonne nuit&nbsp;»&nbsp;?</summary>
+        <p class="answer">«&nbsp;Bonne nuit&nbsp;» se dit uniquement juste avant que la personne aille se coucher. Ce n'est pas une salutation du soir&nbsp;: pour saluer en soirée, on dit «&nbsp;bonsoir&nbsp;».</p>
       </details>
 
       <details>
-        <summary data-i18n="faqQ6">Pourquoi l'heure pour dire bonsoir change selon les saisons&nbsp;?</summary>
-        <p class="answer" data-i18n="faqA6">L'usage français lie traditionnellement «&nbsp;bonsoir&nbsp;» à la tombée de la nuit. Le site se base sur le coucher du soleil réel à Paris, dans une fourchette comprise entre 17h30 et 18h pour rester cohérent avec les règles de politesse.</p>
+        <summary>Pourquoi l'heure pour dire bonsoir change selon les saisons&nbsp;?</summary>
+        <p class="answer">L'usage français lie traditionnellement «&nbsp;bonsoir&nbsp;» à la tombée de la nuit. Le site se base sur le coucher du soleil réel à Paris, dans une fourchette comprise entre 17h30 et 18h pour rester cohérent avec les règles de politesse.</p>
       </details>
     </section>
 
     <section class="share">
-      <h2 data-i18n="shareTitle">Partage</h2>
+      <h2>Partage</h2>
 
       <div class="share-icons">
-        <a title="Faire un tweet" data-i18n-title="twitterTitle"
+        <a title="Faire un tweet"
           href="https://twitter.com/intent/tweet?text=Faut+t%27il+dire+bonjour+ou+bonsoir+%3f%20https://bonjouroubonsoir.fr/+de+@aime_dev">
           <img src="./assets/twitter.webp" alt="Logo Twitter" width="35" height="35">
         </a>
-        <a title="Partager sur Facebook" data-i18n-title="facebookTitle" href="https://www.facebook.com/sharer/sharer.php?u=https://bonjouroubonsoir.fr/"
+        <a title="Partager sur Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://bonjouroubonsoir.fr/"
           lang="en" xml:lang="en">
           <img src="./assets/facebook.webp" alt="Logo Facebook" width="35" height="35">
         </a>
       </div>
 
       <a href="https://fazcode.com/discord">Discord</a>
-      <a title="Github" data-i18n-title="githubTitle" data-i18n="githubLink" href="https://github.com/FazCodeFR/BonjourOuBonsoir">Projet open source</a>
+      <a title="Github" href="https://github.com/FazCodeFR/BonjourOuBonsoir">Projet open source</a>
 
-      <span class="made" data-i18n="made">Made with ❤️ in France</span>
+      <span class="made">Made with ❤️ in France</span>
     </section>
   </main>
   <script src="./index.js"></script>

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="https://www.w3.org/1999/xhtml">
     <url>
         <loc>https://bonjouroubonsoir.fr/</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-08-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://bonjouroubonsoir.fr/" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/en/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://bonjouroubonsoir.fr/" />
+    </url>
+    <url>
+        <loc>https://bonjouroubonsoir.fr/en/</loc>
+        <lastmod>2026-08-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://bonjouroubonsoir.fr/" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/en/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://bonjouroubonsoir.fr/" />
     </url>
 </urlset>

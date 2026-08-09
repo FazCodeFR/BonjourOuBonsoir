@@ -12,7 +12,8 @@ Règles principales :
 
 ## Pages
 
-- [Accueil](https://bonjouroubonsoir.fr/) : page unique affichant la salutation appropriée à l'heure courante, avec une FAQ sur les usages.
+- [Accueil (FR)](https://bonjouroubonsoir.fr/) : page affichant la salutation appropriée à l'heure courante, avec une FAQ sur les usages, en français.
+- [Home (EN)](https://bonjouroubonsoir.fr/en/) : English version of the same page, with the same live greeting and FAQ.
 
 ## Documentation
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-pwa-cache-v2';
+const CACHE_NAME = 'my-pwa-cache-v3';
 const urlsToCache = [
     './',
     './index.html',
@@ -7,6 +7,8 @@ const urlsToCache = [
     './croissant.webp',
     'assets/facebook.webp',
     'assets/twitter.webp',
+    './en/',
+    './en/index.html',
 ];
 
 self.addEventListener('install', event => {
