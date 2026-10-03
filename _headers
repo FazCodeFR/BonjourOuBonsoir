@@ -1,0 +1,28 @@
+# En-têtes HTTP Cloudflare Pages
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Le service worker doit toujours être revalidé pour que les mises à jour arrivent
+/service-worker.js
+  Cache-Control: no-cache
+
+/manifest.json
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=86400
+
+# Images (noms non versionnés : cache d'une semaine)
+/*.webp
+  Cache-Control: public, max-age=604800
+/*.png
+  Cache-Control: public, max-age=604800
+/favicon.ico
+  Cache-Control: public, max-age=604800
+
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
