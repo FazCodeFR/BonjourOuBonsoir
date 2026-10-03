@@ -1,7 +1,8 @@
-const CACHE_NAME = 'my-pwa-cache-v9';
+const CACHE_NAME = 'my-pwa-cache-v11';
 const urlsToCache = [
     './',
     './index.js',
+    './salutation.js',
     './croissant.webp',
     'assets/facebook.webp',
     'assets/twitter.webp',
@@ -33,8 +34,8 @@ self.addEventListener('fetch', event => {
     const { request } = event;
     const url = new URL(request.url);
 
-    // Ignorer les requêtes non-GET, externes et les scripts Cloudflare
-    if (request.method !== 'GET' || url.origin !== self.location.origin || url.pathname.startsWith('/cdn-cgi/')) {
+    // Ignorer les requêtes non-GET, externes, l'API et les scripts Cloudflare
+    if (request.method !== 'GET' || url.origin !== self.location.origin || url.pathname.startsWith('/cdn-cgi/') || url.pathname.startsWith('/api/')) {
         return;
     }
 

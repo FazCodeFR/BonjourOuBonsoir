@@ -15,6 +15,8 @@
   <link rel="alternate" hreflang="fr" href="https://bonjouroubonsoir.fr/" />
   <link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/en/" />
   <link rel="alternate" hreflang="x-default" href="https://bonjouroubonsoir.fr/" />
+  <link rel="alternate" type="application/json" href="https://bonjouroubonsoir.fr/api/bonjour-ou-bonsoir" title="Réponse en direct (JSON)" />
+  <link rel="modulepreload" href="/salutation.js" />
   <meta name="description"
     content="Bonjour ou bonsoir ? Réponse en temps réel : en France, on dit bonsoir entre 17h30 et 18h selon le coucher du soleil à Paris. Règles et FAQ." />
   <meta name="keywords"
@@ -51,7 +53,6 @@
   <meta name="twitter:creator" content="@FazCodeFR" />
 
   <link rel="preload" href="./fonts/open-sans-latin-wght-400-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preconnect" href="https://api.sunrise-sunset.org" crossorigin />
   <style>
     @font-face {
         font-family: 'Open Sans';
@@ -448,7 +449,44 @@
         margin-top: -8px;
     }
 
+    .local {
+        margin: 24px auto 0;
+        max-width: 460px;
+        padding: 14px 20px;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 14px;
+    }
+
+    .local[hidden] {
+        display: none;
+    }
+
+    .local p {
+        margin: 0;
+        font-size: 0.9375rem;
+    }
+
+    #localText {
+        display: inline-block;
+        margin-left: 4px;
+        padding: 2px 12px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--color-bon-1) 0%, var(--color-bon-2) 100%);
+        color: #3a2c0a;
+        font-weight: 700;
+    }
+
+    .local .local-switch {
+        margin-top: 6px;
+        font-size: 0.8125rem;
+        color: var(--color-text-soft);
+    }
+
     @media only screen and (max-width: 600px) {
+        .local {
+            padding: 12px 14px;
+        }
         body {
             padding: 32px 16px;
         }
@@ -554,6 +592,16 @@
       "author": { "@id": "https://bonjouroubonsoir.fr/#fazcode" }
     },
     {
+      "@type": "WebAPI",
+      "@id": "https://bonjouroubonsoir.fr/#api",
+      "name": "API Bonjour ou Bonsoir",
+      "description": "Renvoie en JSON s'il faut dire bonjour ou bonsoir maintenant en France (et dans le fuseau horaire du visiteur), avec l'heure de bascule du jour. Sans authentification.",
+      "url": "https://bonjouroubonsoir.fr/api/bonjour-ou-bonsoir",
+      "documentation": "https://github.com/FazCodeFR/BonjourOuBonsoir/blob/master/ALGORITHME.md",
+      "provider": { "@id": "https://bonjouroubonsoir.fr/#fazcode" },
+      "isAccessibleForFree": true
+    },
+    {
     "@type": "FAQPage",
     "@id": "https://bonjouroubonsoir.fr/#faq",
     "inLanguage": "fr-FR",
@@ -614,6 +662,14 @@
           "@type": "Answer",
           "text": "Le site récupère l'heure du coucher du soleil à Paris et bascule 30 minutes avant, sans jamais descendre sous 17h30 ni dépasser 18h. Exemples : 17h30 en hiver, environ 17h40 en automne, 18h au printemps et en été. Le matin, « bonjour » commence au lever du soleil, mais jamais avant 6h."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Et si je ne suis pas en France ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le site affiche toujours la réponse pour la France. Si votre fuseau horaire est différent, une deuxième réponse « chez vous » apparaît dessous : elle applique les mêmes règles à votre heure locale et au coucher du soleil près de chez vous (position approximative, déduite de votre connexion)."
+        }
       }
     ]
     }
@@ -636,6 +692,10 @@
     <h2>À cette heure en France, il est préférable de dire&nbsp;:</h2>
     <div aria-live="polite"><strong id="bonText">Bonjour</strong></div>
     <p class="switch-time">Aujourd'hui à Paris, on passe à «&nbsp;bonsoir&nbsp;» à <strong id="switchTime">17h30–18h</strong>.</p>
+    <div class="local" id="local" hidden aria-live="polite">
+      <p>Chez vous (<span id="localVille"></span>, <span id="localHeure"></span>)&nbsp;: <strong id="localText"></strong></p>
+      <p class="local-switch">On y passe à «&nbsp;bonsoir&nbsp;» à <span id="localSwitch"></span>.</p>
+    </div>
 
     <section class="how" aria-labelledby="how-title">
       <h2 id="how-title">Bonjour ou bonsoir&nbsp;: comment savoir&nbsp;?</h2>
@@ -692,6 +752,11 @@
         <summary><h3>Comment le site calcule-t-il l'heure de bascule vers bonsoir&nbsp;?</h3></summary>
         <p class="answer">Le site récupère l'heure du coucher du soleil à Paris et bascule 30&nbsp;minutes avant, sans jamais descendre sous 17h30 ni dépasser 18h. Exemples&nbsp;: 17h30 en hiver, environ 17h40 en automne, 18h au printemps et en été. Le matin, «&nbsp;bonjour&nbsp;» commence au lever du soleil, mais jamais avant 6h.</p>
       </details>
+
+      <details>
+        <summary><h3>Et si je ne suis pas en France&nbsp;?</h3></summary>
+        <p class="answer">Le site affiche toujours la réponse pour la France. Si votre fuseau horaire est différent, une deuxième réponse «&nbsp;chez vous&nbsp;» apparaît dessous&nbsp;: elle applique les mêmes règles à votre heure locale et au coucher du soleil près de chez vous (position approximative, déduite de votre connexion).</p>
+      </details>
     </section>
 
     <section class="share">
@@ -713,7 +778,7 @@
       <span class="updated">Mis à jour le <time datetime="2026-10-03">3 octobre 2026</time></span>
     </section>
   </main>
-  <script src="./index.js"></script>
+  <script type="module" src="./index.js"></script>
 
 </body>
 

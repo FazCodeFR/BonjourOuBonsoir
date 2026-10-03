@@ -2,7 +2,7 @@
 
 > Site web qui indique en temps réel s'il faut dire « Bonjour » ou « Bonsoir » selon l'heure et le coucher du soleil à Paris, en s'appuyant sur les règles du savoir-vivre français.
 
-Le site est une application web statique (HTML, CSS, JavaScript) hébergée sur https://bonjouroubonsoir.fr/. Il interroge l'API publique sunrise-sunset.org pour obtenir le lever et le coucher du soleil du jour à Paris, puis applique un algorithme déterministe pour décider de la salutation appropriée. L'interface est disponible en français et en anglais (PWA installable).
+Le site est une application web statique (HTML, CSS, JavaScript) hébergée sur Cloudflare Pages à https://bonjouroubonsoir.fr/. Une Cloudflare Function récupère le lever et le coucher du soleil du jour à Paris (API sunrise-sunset.org, mise en cache), applique un algorithme déterministe et écrit la salutation directement dans le HTML : la réponse est lisible sans exécuter de JavaScript. L'interface est disponible en français et en anglais (PWA installable).
 
 Règles principales :
 - « Bonjour » est utilisé du lever du soleil (au plus tôt 6 h) jusqu'à 17 h 30.
@@ -10,12 +10,18 @@ Règles principales :
 - « Bonsoir » est utilisé de 18 h jusqu'au lendemain matin.
 - « Bonne nuit » se dit uniquement avant le coucher (non géré par le site).
 
+Si le visiteur n'a pas l'heure française, une seconde réponse « chez vous » s'affiche, calculée avec son heure locale et le coucher du soleil près de chez lui.
+
 La page affiche aussi l'heure exacte de bascule du jour (ex. « Aujourd'hui à Paris, on passe à bonsoir à 17h40 »), avec un tableau des heures de bascule par saison.
 
 ## Pages
 
 - [Accueil (FR)](https://bonjouroubonsoir.fr/) : page affichant la salutation appropriée à l'heure courante, avec une FAQ sur les usages, en français.
 - [Home (EN)](https://bonjouroubonsoir.fr/en/) : English version of the same page, with the same live greeting and FAQ.
+
+## API
+
+- [Bonjour ou bonsoir maintenant (JSON)](https://bonjouroubonsoir.fr/api/bonjour-ou-bonsoir) : `france.reponse` donne « Bonjour » ou « Bonsoir » à dire maintenant en France, `france.bascule` l'heure de bascule du jour, plus le lever et le coucher du soleil à Paris. `local` donne la même chose pour le fuseau du visiteur (ou `?tz=America/Toronto&lat=43.65&lng=-79.38`), `null` s'il a l'heure française. `?lang=en` pour les heures au format anglais. Sans authentification, CORS ouvert.
 
 ## Documentation
 

@@ -33,7 +33,11 @@ En France, on dit « bonjour » jusqu'à 17h30 et « bonsoir » à partir de 18h
 
 ## Algorithme
 
-Données : lever et coucher du soleil du jour à Paris, via l'API publique sunrise-sunset.org (repli à 6h / 18h si l'API ne répond pas).
+Données : lever et coucher du soleil du jour à Paris, via l'API publique sunrise-sunset.org, récupérés côté serveur et mis en cache 24 h (repli à 6h / 18h si l'API ne répond pas). Heure courante : heure de Paris.
+
+Réponse en direct (JSON) : https://bonjouroubonsoir.fr/api/bonjour-ou-bonsoir (champ `france.reponse` : « Bonjour » ou « Bonsoir »).
+
+Visiteur hors du fuseau français : la page affiche aussi une réponse « chez vous », avec la même règle appliquée à son heure locale et au coucher du soleil de sa position approximative (déduite de l'IP).
 
 ```
 seuil_matin   = MAX(6h, lever_soleil)

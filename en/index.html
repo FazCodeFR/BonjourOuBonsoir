@@ -15,6 +15,8 @@
   <link rel="alternate" hreflang="fr" href="https://bonjouroubonsoir.fr/" />
   <link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/en/" />
   <link rel="alternate" hreflang="x-default" href="https://bonjouroubonsoir.fr/" />
+  <link rel="alternate" type="application/json" href="https://bonjouroubonsoir.fr/api/bonjour-ou-bonsoir" title="Live answer (JSON)" />
+  <link rel="modulepreload" href="/salutation.js" />
   <meta name="description"
     content="Bonjour or bonsoir? Live answer: in France, people switch to bonsoir between 5:30 and 6 PM depending on sunset in Paris." />
   <meta name="keywords"
@@ -51,7 +53,6 @@
   <meta name="twitter:creator" content="@FazCodeFR" />
 
   <link rel="preload" href="../fonts/open-sans-latin-wght-400-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preconnect" href="https://api.sunrise-sunset.org" crossorigin />
   <style>
     @font-face {
         font-family: 'Open Sans';
@@ -448,7 +449,44 @@
         margin-top: -8px;
     }
 
+    .local {
+        margin: 24px auto 0;
+        max-width: 460px;
+        padding: 14px 20px;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 14px;
+    }
+
+    .local[hidden] {
+        display: none;
+    }
+
+    .local p {
+        margin: 0;
+        font-size: 0.9375rem;
+    }
+
+    #localText {
+        display: inline-block;
+        margin-left: 4px;
+        padding: 2px 12px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--color-bon-1) 0%, var(--color-bon-2) 100%);
+        color: #3a2c0a;
+        font-weight: 700;
+    }
+
+    .local .local-switch {
+        margin-top: 6px;
+        font-size: 0.8125rem;
+        color: var(--color-text-soft);
+    }
+
     @media only screen and (max-width: 600px) {
+        .local {
+            padding: 12px 14px;
+        }
         body {
             padding: 32px 16px;
         }
@@ -554,6 +592,16 @@
       "author": { "@id": "https://bonjouroubonsoir.fr/#fazcode" }
     },
     {
+      "@type": "WebAPI",
+      "@id": "https://bonjouroubonsoir.fr/#api",
+      "name": "API Bonjour ou Bonsoir",
+      "description": "Renvoie en JSON s'il faut dire bonjour ou bonsoir maintenant en France (et dans le fuseau horaire du visiteur), avec l'heure de bascule du jour. Sans authentification.",
+      "url": "https://bonjouroubonsoir.fr/api/bonjour-ou-bonsoir",
+      "documentation": "https://github.com/FazCodeFR/BonjourOuBonsoir/blob/master/ALGORITHME.md",
+      "provider": { "@id": "https://bonjouroubonsoir.fr/#fazcode" },
+      "isAccessibleForFree": true
+    },
+    {
     "@type": "FAQPage",
     "@id": "https://bonjouroubonsoir.fr/en/#faq",
     "inLanguage": "en-US",
@@ -614,6 +662,14 @@
           "@type": "Answer",
           "text": "The site fetches the sunset time in Paris and switches 30 minutes before it, never earlier than 5:30 PM and never later than 6 PM. For example: 5:30 PM in winter, around 5:40 PM in autumn, 6 PM in spring and summer. In the morning, “bonjour” starts at sunrise, but never before 6 AM."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I'm not in France?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The site always shows the answer for France. If your time zone is different, a second answer for where you are appears below it: it applies the same rules to your local time and to the sunset near you (approximate location, based on your connection)."
+        }
       }
     ]
     }
@@ -636,6 +692,10 @@
     <h2>Right now in France, the polite greeting is:</h2>
     <div aria-live="polite"><strong id="bonText">Bonjour</strong></div>
     <p class="switch-time">Today in Paris, &ldquo;bonsoir&rdquo; starts at <strong id="switchTime">5:30&ndash;6 PM</strong>.</p>
+    <div class="local" id="local" hidden aria-live="polite">
+      <p>Where you are (<span id="localVille"></span>, <span id="localHeure"></span>): <strong id="localText"></strong></p>
+      <p class="local-switch">There, &ldquo;bonsoir&rdquo; starts at <span id="localSwitch"></span>.</p>
+    </div>
 
     <section class="how" aria-labelledby="how-title">
       <h2 id="how-title">Bonjour or bonsoir: how to tell?</h2>
@@ -692,6 +752,11 @@
         <summary><h3>How does the site work out when to switch to bonsoir?</h3></summary>
         <p class="answer">The site fetches the sunset time in Paris and switches 30 minutes before it, never earlier than 5:30 PM and never later than 6 PM. For example: 5:30 PM in winter, around 5:40 PM in autumn, 6 PM in spring and summer. In the morning, &ldquo;bonjour&rdquo; starts at sunrise, but never before 6 AM.</p>
       </details>
+
+      <details>
+        <summary><h3>What if I'm not in France?</h3></summary>
+        <p class="answer">The site always shows the answer for France. If your time zone is different, a second answer for where you are appears below it: it applies the same rules to your local time and to the sunset near you (approximate location, based on your connection).</p>
+      </details>
     </section>
 
     <section class="share">
@@ -713,7 +778,7 @@
       <span class="updated">Last updated <time datetime="2026-10-03">October 3, 2026</time></span>
     </section>
   </main>
-  <script src="../index.js"></script>
+  <script type="module" src="../index.js"></script>
 
 </body>
 
