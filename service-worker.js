@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-pwa-cache-v3';
+const CACHE_NAME = 'my-pwa-cache-v5';
 const urlsToCache = [
     './',
     './index.html',
@@ -9,6 +9,8 @@ const urlsToCache = [
     'assets/twitter.webp',
     './en/',
     './en/index.html',
+    './404.html',
+    './favicon.ico',
 ];
 
 self.addEventListener('install', event => {

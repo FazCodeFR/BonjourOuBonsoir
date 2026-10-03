@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <title>Faut-il dire bonjour ou bonsoir ?</title>
   <meta name="author" content="Fazcode" />
-  <link rel="apple-touch-icon" href="./croissant.webp" />
-  <link rel="icon" type="image/png" href="./croissant.webp" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/webp" href="./croissant.webp" />
+  <link rel="author" href="./humans.txt" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://bonjouroubonsoir.fr/" />
@@ -17,16 +19,20 @@
   <meta name="description"
     content="Faut-il dire bonjour ou bonsoir maintenant ? Réponse en temps réel selon l'heure et le coucher du soleil, basée sur les règles du savoir-vivre français." />
   <meta name="keywords"
-    content="faut-il dire bonjour ou bonsoir, bonjour ou bonsoir, A partit de quelle heure on peux dire bonjour et bonsoir, moment pour dire bonjour, moment pour dire bonsoir, quand dire bonjour, quand dire bonsoir, indications pour bonjour, français, bonjour or bonsoir online, jusqu'à quand on peut dire bonjour, fazcode">
-  <meta itemprop="image" content="https://bonjouroubonsoir.fr/croissant.webp" />
+    content="faut-il dire bonjour ou bonsoir, bonjour ou bonsoir, à partir de quelle heure peut-on dire bonsoir, jusqu'à quelle heure peut-on dire bonjour, quand dire bonjour, quand dire bonsoir, heure pour dire bonsoir, bonsoir ou bonne soirée, savoir-vivre français, politesse, fazcode">
 
   <!-- Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bonjour ou Bonsoir ?" />
   <meta property="og:url" content="https://bonjouroubonsoir.fr/" />
   <meta property="og:title" content="Faut-il dire bonjour ou bonsoir ?" />
   <meta property="og:description"
     content="Faut-il dire bonjour ou bonsoir maintenant ? Réponse en temps réel selon l'heure et le coucher du soleil, basée sur les règles du savoir-vivre français." />
-  <meta property="og:image" content="https://bonjouroubonsoir.fr/croissant.webp" />
+  <meta property="og:image" content="https://bonjouroubonsoir.fr/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="Un croissant, logo du site Bonjour ou Bonsoir" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:locale:alternate" content="en_US" />
 
@@ -36,14 +42,14 @@
 
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://bonjouroubonsoir.fr/" />
   <meta name="twitter:title" content="Faut-il dire bonjour ou bonsoir ?" />
   <meta name="twitter:description"
     content="Faut-il dire bonjour ou bonsoir maintenant ? Réponse en temps réel selon l'heure et le coucher du soleil, basée sur les règles du savoir-vivre français." />
-  <meta name="twitter:image" content="https://bonjouroubonsoir.fr/croissant.webp" />
-  <meta name="twitter:site" content="FazCodeFR" />
-  <meta name="twitter:creator" content="FazCodeFR" />
+  <meta name="twitter:image" content="https://bonjouroubonsoir.fr/og-image.png" />
+  <meta name="twitter:site" content="@FazCodeFR" />
+  <meta name="twitter:creator" content="@FazCodeFR" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,23 +59,56 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Bonjour ou Bonsoir ?",
-    "url": "https://bonjouroubonsoir.fr/",
-    "description": "Le site qui vous indique s'il faut dire bonjour ou bonsoir à ce moment.",
-    "inLanguage": "fr-FR",
-    "author": {
+    "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://bonjouroubonsoir.fr/#website",
+      "name": "Bonjour ou Bonsoir ?",
+      "url": "https://bonjouroubonsoir.fr/",
+      "description": "Le site qui vous indique s'il faut dire bonjour ou bonsoir à ce moment.",
+      "inLanguage": ["fr-FR", "en-US"],
+      "publisher": { "@id": "https://bonjouroubonsoir.fr/#fazcode" }
+    },
+    {
       "@type": "Person",
+      "@id": "https://bonjouroubonsoir.fr/#fazcode",
       "name": "Fazcode",
-      "url": "https://fazcode.com/"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+      "url": "https://fazcode.com/",
+      "sameAs": [
+        "https://github.com/FazCodeFR",
+        "https://x.com/FazCodeFR"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://bonjouroubonsoir.fr/#webpage",
+      "url": "https://bonjouroubonsoir.fr/",
+      "name": "Faut-il dire bonjour ou bonsoir ?",
+      "inLanguage": "fr-FR",
+      "isPartOf": { "@id": "https://bonjouroubonsoir.fr/#website" },
+      "author": { "@id": "https://bonjouroubonsoir.fr/#fazcode" },
+      "dateModified": "2026-10-03",
+      "about": { "@type": "Thing", "name": "Salutations françaises : bonjour et bonsoir" },
+      "mainEntity": { "@id": "https://bonjouroubonsoir.fr/#app" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://bonjouroubonsoir.fr/#app",
+      "name": "Bonjour ou Bonsoir ?",
+      "url": "https://bonjouroubonsoir.fr/",
+      "description": "Indique en temps réel s'il faut dire bonjour ou bonsoir, selon l'heure et le coucher du soleil à Paris (bascule entre 17h30 et 18h).",
+      "applicationCategory": "ReferenceApplication",
+      "operatingSystem": "Any",
+      "inLanguage": ["fr-FR", "en-US"],
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "author": { "@id": "https://bonjouroubonsoir.fr/#fazcode" }
+    },
+    {
     "@type": "FAQPage",
+    "@id": "https://bonjouroubonsoir.fr/#faq",
     "inLanguage": "fr-FR",
+    "isPartOf": { "@id": "https://bonjouroubonsoir.fr/#webpage" },
     "mainEntity": [
       {
         "@type": "Question",
@@ -118,7 +157,17 @@
           "@type": "Answer",
           "text": "Parce que l'usage français lie traditionnellement « bonsoir » à la tombée de la nuit. Le site se base sur le coucher du soleil réel à Paris, dans une fourchette comprise entre 17h30 et 18h pour rester cohérent avec les règles de politesse."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment le site calcule-t-il l'heure de bascule vers bonsoir ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le site récupère l'heure du coucher du soleil à Paris et bascule 30 minutes avant, sans jamais descendre sous 17h30 ni dépasser 18h. Exemples : 17h30 en hiver, environ 17h40 en automne, 18h au printemps et en été. Le matin, « bonjour » commence au lever du soleil, mais jamais avant 6h."
+        }
       }
+    ]
+    }
     ]
   }
   </script>
@@ -138,7 +187,7 @@
 
 </head>
 
-<body role="document">
+<body>
 
   <main class="aligncenter">
     <div class="lang-switch" role="group" aria-label="Language">
@@ -150,6 +199,25 @@
 
     <h2>À cette heure en France, il est préférable de dire&nbsp;:</h2>
     <time><strong id="bonText">Bonjour</strong></time>
+    <p class="switch-time">Aujourd'hui à Paris, on passe à «&nbsp;bonsoir&nbsp;» à <strong id="switchTime">17h30–18h</strong>.</p>
+
+    <section class="how" aria-labelledby="how-title">
+      <h2 id="how-title">Comment ça marche&nbsp;?</h2>
+      <p>En France, on dit «&nbsp;bonjour&nbsp;» jusqu'à 17h30 et «&nbsp;bonsoir&nbsp;» à partir de 18h. Entre les deux, la bascule dépend de la tombée de la nuit.</p>
+      <p>Le site récupère le coucher du soleil réel à Paris et bascule 30&nbsp;minutes avant, toujours entre 17h30 et 18h. Le matin, «&nbsp;bonjour&nbsp;» commence au lever du soleil, mais jamais avant 6h.</p>
+      <table>
+        <caption>Heure de bascule vers «&nbsp;bonsoir&nbsp;» selon la saison</caption>
+        <thead>
+          <tr><th scope="col">Saison</th><th scope="col">Coucher du soleil</th><th scope="col">On dit bonsoir à</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Hiver (décembre)</th><td>16h55</td><td>17h30</td></tr>
+          <tr><th scope="row">Automne (octobre)</th><td>18h10</td><td>17h40</td></tr>
+          <tr><th scope="row">Printemps (mars)</th><td>18h45</td><td>18h00</td></tr>
+          <tr><th scope="row">Été (juin)</th><td>21h55</td><td>18h00</td></tr>
+        </tbody>
+      </table>
+    </section>
 
     <section class="faq" aria-labelledby="faq-title">
       <h2 id="faq-title">Quand dire bonjour ou bonsoir&nbsp;?</h2>
@@ -183,6 +251,11 @@
         <summary>Pourquoi l'heure pour dire bonsoir change selon les saisons&nbsp;?</summary>
         <p class="answer">L'usage français lie traditionnellement «&nbsp;bonsoir&nbsp;» à la tombée de la nuit. Le site se base sur le coucher du soleil réel à Paris, dans une fourchette comprise entre 17h30 et 18h pour rester cohérent avec les règles de politesse.</p>
       </details>
+
+      <details>
+        <summary>Comment le site calcule-t-il l'heure de bascule vers bonsoir&nbsp;?</summary>
+        <p class="answer">Le site récupère l'heure du coucher du soleil à Paris et bascule 30&nbsp;minutes avant, sans jamais descendre sous 17h30 ni dépasser 18h. Exemples&nbsp;: 17h30 en hiver, environ 17h40 en automne, 18h au printemps et en été. Le matin, «&nbsp;bonjour&nbsp;» commence au lever du soleil, mais jamais avant 6h.</p>
+      </details>
     </section>
 
     <section class="share">
@@ -190,7 +263,7 @@
 
       <div class="share-icons">
         <a title="Faire un tweet"
-          href="https://twitter.com/intent/tweet?text=Faut+t%27il+dire+bonjour+ou+bonsoir+%3f%20https://bonjouroubonsoir.fr/+de+@aime_dev">
+          href="https://twitter.com/intent/tweet?text=Faut-il+dire+bonjour+ou+bonsoir+%3f%20https://bonjouroubonsoir.fr/+de+@aime_dev">
           <img src="./assets/twitter.webp" alt="Logo Twitter" width="35" height="35">
         </a>
         <a title="Partager sur Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://bonjouroubonsoir.fr/"
@@ -203,6 +276,7 @@
       <a title="Github" href="https://github.com/FazCodeFR/BonjourOuBonsoir">Projet open source</a>
 
       <span class="made">Made with ❤️ in France</span>
+      <span class="updated">Mis à jour le <time datetime="2026-10-03">3 octobre 2026</time></span>
     </section>
   </main>
   <script src="./index.js"></script>

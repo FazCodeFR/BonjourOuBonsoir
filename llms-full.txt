@@ -1,0 +1,95 @@
+# Bonjour ou Bonsoir ? — contenu complet
+
+> Site web (https://bonjouroubonsoir.fr/) qui indique en temps réel s'il faut dire « Bonjour » ou « Bonsoir » en France, selon l'heure et le coucher du soleil à Paris, en s'appuyant sur les règles du savoir-vivre français. Version anglaise : https://bonjouroubonsoir.fr/en/
+
+Auteur : Fazcode (https://fazcode.com/) — projet open source : https://github.com/FazCodeFR/BonjourOuBonsoir
+Dernière mise à jour : 2026-10-03
+
+## Règle en une phrase
+
+En France, on dit « bonjour » jusqu'à 17h30 et « bonsoir » à partir de 18h ; entre 17h30 et 18h, la bascule se fait 30 minutes avant le coucher du soleil.
+
+## Usages du savoir-vivre français
+
+| Période | Salutation | Remarque |
+|---|---|---|
+| Lever du soleil (au plus tôt 6h) → 12h | Bonjour | Standard |
+| 12h → 17h30 | Bonjour | « Bon après-midi » sert à prendre congé, pas à saluer |
+| 17h30 → 18h | Zone de bascule | « Bonsoir » remplace « Bonjour » selon la tombée de la nuit |
+| 18h → lendemain matin | Bonsoir | Salutation du soir |
+| Juste avant d'aller dormir | Bonne nuit | Ce n'est pas une salutation |
+
+- « Bonsoir » sert à saluer en arrivant ; « Bonne soirée » sert à prendre congé.
+- « Bonne nuit » se dit uniquement juste avant que la personne aille se coucher.
+
+## Heure de bascule vers « bonsoir » selon la saison (Paris)
+
+| Saison | Coucher du soleil | On dit bonsoir à |
+|---|---|---|
+| Hiver (décembre) | 16h55 | 17h30 |
+| Automne (octobre) | 18h10 | 17h40 |
+| Printemps (mars) | 18h45 | 18h00 |
+| Été (juin) | 21h55 | 18h00 |
+
+## Algorithme
+
+Données : lever et coucher du soleil du jour à Paris, via l'API publique sunrise-sunset.org (repli à 6h / 18h si l'API ne répond pas).
+
+```
+seuil_matin   = MAX(6h, lever_soleil)
+seuil_naturel = MAX(17h30, coucher_soleil − 30 min)
+seuil_soir    = MIN(18h, seuil_naturel)
+
+si seuil_matin ≤ heure < seuil_soir → "Bonjour"
+sinon                                → "Bonsoir"
+```
+
+Le seuil du soir reste toujours dans l'intervalle [17h30 ; 18h00]. L'affichage est rafraîchi toutes les 3 minutes, et les données solaires toutes les 6 heures.
+
+Documentation détaillée : https://github.com/FazCodeFR/BonjourOuBonsoir/blob/master/ALGORITHME.md
+
+## FAQ (français)
+
+### À partir de quelle heure dit-on bonsoir ?
+En France, on commence à dire « bonsoir » entre 17h30 et 18h selon la saison. En hiver, quand la nuit tombe vers 17h, on bascule dès 17h30 ; en été, on attend 18h car il fait encore jour.
+
+### Jusqu'à quelle heure peut-on dire bonjour ?
+« Bonjour » reste correct jusqu'à 17h30 toute l'année. Au-delà, et au plus tard à 18h, « bonsoir » prend le relais. Cette zone de bascule est typique du savoir-vivre français.
+
+### Peut-on dire bonjour à 17h ?
+Oui, sans hésiter. À 17h, l'usage est encore « bonjour » partout en France, quelle que soit la saison. La transition vers « bonsoir » ne commence qu'à partir de 17h30.
+
+### Quelle est la différence entre « bonsoir » et « bonne soirée » ?
+« Bonsoir » sert à saluer quelqu'un quand on le rencontre en fin de journée. « Bonne soirée » sert à prendre congé, en lui souhaitant une agréable fin de journée. On ne dit pas « bonne soirée » en arrivant.
+
+### Quand dit-on « bonne nuit » ?
+« Bonne nuit » se dit uniquement juste avant que la personne aille se coucher. Ce n'est pas une salutation du soir : pour saluer en soirée, on dit « bonsoir ».
+
+### Pourquoi l'heure pour dire bonsoir change selon les saisons ?
+Parce que l'usage français lie traditionnellement « bonsoir » à la tombée de la nuit. Le site se base sur le coucher du soleil réel à Paris, dans une fourchette comprise entre 17h30 et 18h pour rester cohérent avec les règles de politesse.
+
+### Comment le site calcule-t-il l'heure de bascule vers bonsoir ?
+Le site récupère l'heure du coucher du soleil à Paris et bascule 30 minutes avant, sans jamais descendre sous 17h30 ni dépasser 18h. Exemples : 17h30 en hiver, environ 17h40 en automne, 18h au printemps et en été. Le matin, « bonjour » commence au lever du soleil, mais jamais avant 6h.
+
+## FAQ (English)
+
+### From what time should you say bonsoir?
+In France, people start saying “bonsoir” between 5:30 PM and 6 PM depending on the season. In winter, when nightfall comes around 5 PM, the switch happens as early as 5:30 PM; in summer it waits until 6 PM because it's still daylight.
+
+### Until what time can you say bonjour?
+“Bonjour” stays correct until 5:30 PM all year round. After that, and at the latest by 6 PM, “bonsoir” takes over. This switching zone is typical of French etiquette.
+
+### Can you say bonjour at 5 PM?
+Yes, without a doubt. At 5 PM, “bonjour” is still the norm everywhere in France, whatever the season. The transition to “bonsoir” only begins at 5:30 PM.
+
+### What's the difference between “bonsoir” and “bonne soirée”?
+“Bonsoir” is used to greet someone you meet in the late afternoon or evening. “Bonne soirée” is a farewell, wishing someone a pleasant evening. You never say “bonne soirée” when arriving.
+
+### When do you say “bonne nuit”?
+“Bonne nuit” is only used right before someone goes to bed. It's not an evening greeting: to greet someone in the evening, you say “bonsoir”.
+
+### Why does the time to say bonsoir change with the seasons?
+French custom traditionally ties “bonsoir” to nightfall. The site uses the actual sunset in Paris, within a 5:30-6 PM window, to stay consistent with the rules of politeness.
+
+### How does the site work out when to switch to bonsoir?
+The site fetches the sunset time in Paris and switches 30 minutes before it, never earlier than 5:30 PM and never later than 6 PM. For example: 5:30 PM in winter, around 5:40 PM in autumn, 6 PM in spring and summer. In the morning, “bonjour” starts at sunrise, but never before 6 AM.

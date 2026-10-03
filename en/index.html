@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <title>Should I say bonjour or bonsoir?</title>
   <meta name="author" content="Fazcode" />
-  <link rel="apple-touch-icon" href="../croissant.webp" />
-  <link rel="icon" type="image/png" href="../croissant.webp" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/webp" href="../croissant.webp" />
+  <link rel="author" href="../humans.txt" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://bonjouroubonsoir.fr/en/" />
@@ -18,15 +20,19 @@
     content="Should I say bonjour or bonsoir right now? Live answer based on the time and the sunset in Paris, following French etiquette." />
   <meta name="keywords"
     content="should I say bonjour or bonsoir, bonjour or bonsoir, when to say bonjour, when to say bonsoir, until what time can you say bonjour, from what time do you say bonsoir, French etiquette, French greetings, fazcode">
-  <meta itemprop="image" content="https://bonjouroubonsoir.fr/croissant.webp" />
 
   <!-- Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bonjour ou Bonsoir ?" />
   <meta property="og:url" content="https://bonjouroubonsoir.fr/en/" />
   <meta property="og:title" content="Should I say bonjour or bonsoir?" />
   <meta property="og:description"
     content="Should I say bonjour or bonsoir right now? Live answer based on the time and the sunset in Paris, following French etiquette." />
-  <meta property="og:image" content="https://bonjouroubonsoir.fr/croissant.webp" />
+  <meta property="og:image" content="https://bonjouroubonsoir.fr/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="A croissant, logo of the Bonjour ou Bonsoir website" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="fr_FR" />
 
@@ -36,14 +42,14 @@
 
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://bonjouroubonsoir.fr/en/" />
   <meta name="twitter:title" content="Should I say bonjour or bonsoir?" />
   <meta name="twitter:description"
     content="Should I say bonjour or bonsoir right now? Live answer based on the time and the sunset in Paris, following French etiquette." />
-  <meta name="twitter:image" content="https://bonjouroubonsoir.fr/croissant.webp" />
-  <meta name="twitter:site" content="FazCodeFR" />
-  <meta name="twitter:creator" content="FazCodeFR" />
+  <meta name="twitter:image" content="https://bonjouroubonsoir.fr/og-image.png" />
+  <meta name="twitter:site" content="@FazCodeFR" />
+  <meta name="twitter:creator" content="@FazCodeFR" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,23 +59,56 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Bonjour ou Bonsoir ?",
-    "url": "https://bonjouroubonsoir.fr/en/",
-    "description": "The site that tells you whether to say bonjour or bonsoir right now.",
-    "inLanguage": "en-US",
-    "author": {
+    "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://bonjouroubonsoir.fr/#website",
+      "name": "Bonjour ou Bonsoir ?",
+      "url": "https://bonjouroubonsoir.fr/",
+      "description": "Le site qui vous indique s'il faut dire bonjour ou bonsoir à ce moment.",
+      "inLanguage": ["fr-FR", "en-US"],
+      "publisher": { "@id": "https://bonjouroubonsoir.fr/#fazcode" }
+    },
+    {
       "@type": "Person",
+      "@id": "https://bonjouroubonsoir.fr/#fazcode",
       "name": "Fazcode",
-      "url": "https://fazcode.com/"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+      "url": "https://fazcode.com/",
+      "sameAs": [
+        "https://github.com/FazCodeFR",
+        "https://x.com/FazCodeFR"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://bonjouroubonsoir.fr/en/#webpage",
+      "url": "https://bonjouroubonsoir.fr/en/",
+      "name": "Should I say bonjour or bonsoir?",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://bonjouroubonsoir.fr/#website" },
+      "author": { "@id": "https://bonjouroubonsoir.fr/#fazcode" },
+      "dateModified": "2026-10-03",
+      "about": { "@type": "Thing", "name": "French greetings: bonjour and bonsoir" },
+      "mainEntity": { "@id": "https://bonjouroubonsoir.fr/#app" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://bonjouroubonsoir.fr/#app",
+      "name": "Bonjour ou Bonsoir ?",
+      "url": "https://bonjouroubonsoir.fr/",
+      "description": "Indique en temps réel s'il faut dire bonjour ou bonsoir, selon l'heure et le coucher du soleil à Paris (bascule entre 17h30 et 18h).",
+      "applicationCategory": "ReferenceApplication",
+      "operatingSystem": "Any",
+      "inLanguage": ["fr-FR", "en-US"],
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "author": { "@id": "https://bonjouroubonsoir.fr/#fazcode" }
+    },
+    {
     "@type": "FAQPage",
+    "@id": "https://bonjouroubonsoir.fr/en/#faq",
     "inLanguage": "en-US",
+    "isPartOf": { "@id": "https://bonjouroubonsoir.fr/en/#webpage" },
     "mainEntity": [
       {
         "@type": "Question",
@@ -118,7 +157,17 @@
           "@type": "Answer",
           "text": "French custom traditionally ties “bonsoir” to nightfall. The site uses the actual sunset in Paris, within a 5:30-6 PM window, to stay consistent with the rules of politeness."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the site work out when to switch to bonsoir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The site fetches the sunset time in Paris and switches 30 minutes before it, never earlier than 5:30 PM and never later than 6 PM. For example: 5:30 PM in winter, around 5:40 PM in autumn, 6 PM in spring and summer. In the morning, “bonjour” starts at sunrise, but never before 6 AM."
+        }
       }
+    ]
+    }
     ]
   }
   </script>
@@ -138,7 +187,7 @@
 
 </head>
 
-<body role="document">
+<body>
 
   <main class="aligncenter">
     <div class="lang-switch" role="group" aria-label="Language">
@@ -150,6 +199,25 @@
 
     <h2>Right now in France, the polite greeting is:</h2>
     <time><strong id="bonText">Bonjour</strong></time>
+    <p class="switch-time">Today in Paris, &ldquo;bonsoir&rdquo; starts at <strong id="switchTime">5:30&ndash;6 PM</strong>.</p>
+
+    <section class="how" aria-labelledby="how-title">
+      <h2 id="how-title">How does it work?</h2>
+      <p>In France, people say &ldquo;bonjour&rdquo; until 5:30 PM and &ldquo;bonsoir&rdquo; from 6 PM. In between, the switch depends on nightfall.</p>
+      <p>The site fetches the actual sunset time in Paris and switches 30 minutes before it, always between 5:30 PM and 6 PM. In the morning, &ldquo;bonjour&rdquo; starts at sunrise, but never before 6 AM.</p>
+      <table>
+        <caption>When to switch to &ldquo;bonsoir&rdquo; by season</caption>
+        <thead>
+          <tr><th scope="col">Season</th><th scope="col">Sunset</th><th scope="col">Say bonsoir from</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Winter (December)</th><td>4:55 PM</td><td>5:30 PM</td></tr>
+          <tr><th scope="row">Autumn (October)</th><td>6:10 PM</td><td>5:40 PM</td></tr>
+          <tr><th scope="row">Spring (March)</th><td>6:45 PM</td><td>6:00 PM</td></tr>
+          <tr><th scope="row">Summer (June)</th><td>9:55 PM</td><td>6:00 PM</td></tr>
+        </tbody>
+      </table>
+    </section>
 
     <section class="faq" aria-labelledby="faq-title">
       <h2 id="faq-title">When to say bonjour or bonsoir?</h2>
@@ -183,6 +251,11 @@
         <summary>Why does the time to say bonsoir change with the seasons?</summary>
         <p class="answer">French custom traditionally ties &ldquo;bonsoir&rdquo; to nightfall. The site uses the actual sunset in Paris, within a 5:30-6 PM window, to stay consistent with the rules of politeness.</p>
       </details>
+
+      <details>
+        <summary>How does the site work out when to switch to bonsoir?</summary>
+        <p class="answer">The site fetches the sunset time in Paris and switches 30 minutes before it, never earlier than 5:30 PM and never later than 6 PM. For example: 5:30 PM in winter, around 5:40 PM in autumn, 6 PM in spring and summer. In the morning, &ldquo;bonjour&rdquo; starts at sunrise, but never before 6 AM.</p>
+      </details>
     </section>
 
     <section class="share">
@@ -203,6 +276,7 @@
       <a title="Github" href="https://github.com/FazCodeFR/BonjourOuBonsoir">Open source project</a>
 
       <span class="made">Made with &#10084;&#65039; in France</span>
+      <span class="updated">Last updated <time datetime="2026-10-03">October 3, 2026</time></span>
     </section>
   </main>
   <script src="../index.js"></script>

@@ -10,6 +10,8 @@ Règles principales :
 - « Bonsoir » est utilisé de 18 h jusqu'au lendemain matin.
 - « Bonne nuit » se dit uniquement avant le coucher (non géré par le site).
 
+La page affiche aussi l'heure exacte de bascule du jour (ex. « Aujourd'hui à Paris, on passe à bonsoir à 17h40 »), avec un tableau des heures de bascule par saison.
+
 ## Pages
 
 - [Accueil (FR)](https://bonjouroubonsoir.fr/) : page affichant la salutation appropriée à l'heure courante, avec une FAQ sur les usages, en français.
@@ -17,6 +19,7 @@ Règles principales :
 
 ## Documentation
 
+- [Contenu complet pour LLM](https://bonjouroubonsoir.fr/llms-full.txt) : règles, tableau des saisons, algorithme et FAQ complète (FR + EN) dans un seul fichier.
 - [Algorithme détaillé](https://github.com/FazCodeFR/BonjourOuBonsoir/blob/master/ALGORITHME.md) : description complète de la logique de décision, des seuils, des données solaires utilisées et du pseudo-code.
 - [README du projet](https://github.com/FazCodeFR/BonjourOuBonsoir/blob/master/README.md) : présentation, stack technique et fonctionnalités.
 

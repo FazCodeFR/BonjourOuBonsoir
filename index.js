@@ -48,11 +48,24 @@ function getSalutation(heureCourante, lever, coucher) {
     : 'Bonsoir';
 }
 
+// Formate une heure décimale selon la langue de la page : 17.6667 -> "17h40" (fr) / "5:40 PM" (en)
+function formaterHeure(decimal, lang) {
+  const totalMinutes = Math.round(decimal * 60);
+  const h = Math.floor(totalMinutes / 60);
+  const m = String(totalMinutes % 60).padStart(2, '0');
+  if (lang === 'en') {
+    return `${h % 12 || 12}:${m} ${h < 12 ? 'AM' : 'PM'}`;
+  }
+  return `${h}h${m}`;
+}
+
 function updateBonText() {
   const now = new Date();
   const heureCourante = now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
   const text = getSalutation(heureCourante, leverSoleil, coucherSoleil);
   document.getElementById('bonText').textContent = text;
+  document.getElementById('switchTime').textContent =
+    formaterHeure(calculerSeuilSoir(coucherSoleil), document.documentElement.lang);
 }
 
 async function chargerDonneesSoleil() {

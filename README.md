@@ -25,7 +25,7 @@ Simply visit the website and see the current greeting displayed. Share the page 
 
 # License
 
-This project is open source and freely available for anyone to use and modify.
+This project is open source under the [MIT License](LICENSE).
 
 ## Authors
 

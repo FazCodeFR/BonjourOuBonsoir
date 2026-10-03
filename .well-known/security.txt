@@ -1,0 +1,5 @@
+# Signalement de vulnérabilités / Vulnerability disclosure
+Contact: https://github.com/FazCodeFR/BonjourOuBonsoir/security/advisories/new
+Expires: 2027-10-03T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://bonjouroubonsoir.fr/.well-known/security.txt

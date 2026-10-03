@@ -154,6 +154,81 @@ h2 {
     color: #3a2c0a;
 }
 
+.switch-time {
+    margin: 20px 0 0;
+    font-size: 0.9375rem;
+    color: var(--color-text-soft);
+}
+
+.switch-time strong {
+    color: var(--color-text);
+}
+
+.how {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-divider);
+    text-align: left;
+}
+
+.how h2 {
+    margin: 0 0 18px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-text-soft);
+    text-align: center;
+}
+
+.how p {
+    margin: 0 0 12px;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.how table {
+    width: 100%;
+    margin-top: 18px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.how caption {
+    caption-side: top;
+    padding-bottom: 10px;
+    font-size: 0.8125rem;
+    color: var(--color-text-soft);
+}
+
+.how th,
+.how td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.how thead th {
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.how tbody th {
+    font-weight: 600;
+}
+
+.how td {
+    white-space: nowrap;
+}
+
+.how tbody tr:last-child th,
+.how tbody tr:last-child td {
+    border-bottom: 0;
+}
+
 .faq {
     margin-top: 48px;
     padding-top: 32px;
@@ -292,10 +367,15 @@ a:hover {
     text-decoration: underline;
 }
 
-.share .made {
+.share .made,
+.share .updated {
     font-size: 0.8125rem;
     color: var(--color-text-soft);
     margin-top: 4px;
+}
+
+.share .updated {
+    margin-top: -8px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -332,9 +412,17 @@ a:hover {
     .share {
         margin-top: 40px;
     }
-    .faq {
+    .faq,
+    .how {
         margin-top: 40px;
         padding-top: 24px;
+    }
+    .how table {
+        font-size: 0.8125rem;
+    }
+    .how th,
+    .how td {
+        padding: 8px 10px;
     }
     .faq summary {
         padding: 12px 14px;
