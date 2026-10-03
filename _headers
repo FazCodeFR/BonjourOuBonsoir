@@ -24,5 +24,9 @@
 /favicon.ico
   Cache-Control: public, max-age=604800
 
+# Polices auto-hébergées (fichier figé : cache d'un an)
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /.well-known/security.txt
   Content-Type: text/plain; charset=utf-8

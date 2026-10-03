@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-pwa-cache-v6';
+const CACHE_NAME = 'my-pwa-cache-v8';
 const urlsToCache = [
     './',
     './index.css',
@@ -9,6 +9,7 @@ const urlsToCache = [
     './en/',
     './404.html',
     './favicon.ico',
+    './fonts/open-sans-latin-wght-400-700.woff2',
 ];
 
 self.addEventListener('install', event => {

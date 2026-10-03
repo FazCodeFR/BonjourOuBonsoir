@@ -15,7 +15,7 @@
   <link rel="alternate" hreflang="fr" href="https://bonjouroubonsoir.fr/" />
   <link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/en/" />
   <link rel="alternate" hreflang="x-default" href="https://bonjouroubonsoir.fr/" />
-  <link rel="preload" as="image" href="../croissant.webp" />
+  <link rel="preload" as="image" href="../croissant.webp" fetchpriority="high" />
   <meta name="description"
     content="Should I say bonjour or bonsoir right now? Live answer based on the time and the sunset in Paris, following French etiquette." />
   <meta name="keywords"
@@ -51,9 +51,8 @@
   <meta name="twitter:site" content="@FazCodeFR" />
   <meta name="twitter:creator" content="@FazCodeFR" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" />
+  <link rel="preload" href="../fonts/open-sans-latin-wght-400-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preconnect" href="https://api.sunrise-sunset.org" crossorigin />
   <link rel="stylesheet" href="../index.css" />
 
   <script type="application/ld+json">
@@ -170,19 +169,6 @@
     }
     ]
   }
-  </script>
-  <!-- Google tag (gtag.js) - deferred until after page load -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    window.addEventListener('load', function () {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-FDNWEF5QN8';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-FDNWEF5QN8');
-    });
   </script>
 
 </head>

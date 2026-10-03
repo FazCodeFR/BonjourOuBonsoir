@@ -11,5 +11,5 @@ GitHub : https://github.com/DiamoonWolf
 Dernière mise à jour : 2026/10/03
 Langues : Français, English
 Standards : HTML5, CSS3, JavaScript, PWA
-Composants : Google Fonts (Open Sans)
+Composants : Open Sans (auto-hébergée)
 Code source : https://github.com/FazCodeFR/BonjourOuBonsoir
