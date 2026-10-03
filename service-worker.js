@@ -14,7 +14,8 @@ const urlsToCache = [
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(urlsToCache))
+            // cache: 'reload' contourne le cache HTTP pour précacher les versions à jour
+            .then(cache => cache.addAll(urlsToCache.map(url => new Request(url, { cache: 'reload' }))))
             .then(() => self.skipWaiting())
     );
 });

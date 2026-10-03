@@ -14,7 +14,11 @@
 
 /manifest.json
   Content-Type: application/manifest+json
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=604800
+
+# Script principal (nom non versionné : cache d'une semaine)
+/index.js
+  Cache-Control: public, max-age=604800
 
 # Images (noms non versionnés : cache d'une semaine)
 /*.webp
