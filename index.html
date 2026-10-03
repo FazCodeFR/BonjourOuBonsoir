@@ -53,7 +53,452 @@
 
   <link rel="preload" href="./fonts/open-sans-latin-wght-400-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preconnect" href="https://api.sunrise-sunset.org" crossorigin />
-  <link rel="stylesheet" href="./index.css" />
+  <style>
+    @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+        src: url('/fonts/open-sans-latin-wght-400-700.woff2') format('woff2');
+    }
+
+    :root {
+        --color-text: #2d2d3d;
+        --color-text-soft: #5a5a6a;
+        --color-card: rgba(255, 255, 255, 0.5);
+        --color-card-border: rgba(255, 255, 255, 0.65);
+        --color-divider: rgba(255, 255, 255, 0.45);
+        --color-link: #4a4ae8;
+        --color-link-hover: #2d2dc6;
+        --color-bon-1: #ffe96a;
+        --color-bon-2: #ffb84d;
+        --shadow-card: 0 20px 60px rgba(60, 60, 100, 0.18);
+        --shadow-bon: 0 10px 28px rgba(255, 184, 77, 0.45);
+        --radius-card: 24px;
+        --radius-bon: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ffb88c 0%, #ffd97d 40%, #7bc6f5 100%);
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        color: var(--color-text);
+        padding: 96px 20px 48px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background:
+            radial-gradient(circle at 15% 20%, rgba(255, 233, 106, 0.55) 0%, transparent 45%),
+            radial-gradient(circle at 85% 85%, rgba(75, 108, 183, 0.35) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .aligncenter {
+        position: relative;
+        text-align: center;
+        border-radius: var(--radius-card);
+        background-color: var(--color-card);
+        padding: 64px 56px 40px;
+        border: 1px solid var(--color-card-border);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+        box-shadow: var(--shadow-card);
+        max-width: 680px;
+        width: 100%;
+        z-index: 1;
+        animation: fadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 1; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .lang-switch {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 2;
+    }
+
+    .lang-switch a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        min-height: 28px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--color-text-soft);
+        padding: 6px 12px;
+        border-radius: 999px;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-switch a:hover {
+        color: var(--color-text);
+        text-decoration: none;
+    }
+
+    .lang-switch a[aria-current="page"] {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--color-link);
+        box-shadow: 0 2px 6px rgba(60, 60, 100, 0.12);
+    }
+
+    .corner-image {
+        position: absolute;
+        left: -24px;
+        top: -28px;
+        width: 96px;
+        height: 96px;
+        margin: 0;
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+        animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(-8deg); }
+        50% { transform: translateY(-6px) rotate(-3deg); }
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 0 0 8px;
+    }
+
+    h2 {
+        font-size: 1.0625rem;
+        font-weight: 400;
+        color: var(--color-text-soft);
+        margin: 28px 0 18px;
+    }
+
+    #bonText {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--color-bon-1) 0%, var(--color-bon-2) 100%);
+        padding: 14px 36px;
+        border-radius: var(--radius-bon);
+        box-shadow: var(--shadow-bon);
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-top: 8px;
+        color: #3a2c0a;
+    }
+
+    .switch-time {
+        margin: 20px 0 0;
+        font-size: 0.9375rem;
+        color: var(--color-text-soft);
+    }
+
+    .switch-time strong {
+        color: var(--color-text);
+    }
+
+    .how {
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--color-divider);
+        text-align: left;
+    }
+
+    .how h2 {
+        margin: 0 0 18px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--color-text-soft);
+        text-align: center;
+    }
+
+    .how p {
+        margin: 0 0 12px;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+
+    .how table {
+        width: 100%;
+        margin-top: 18px;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 14px;
+        overflow: hidden;
+    }
+
+    .how caption {
+        caption-side: top;
+        padding-bottom: 10px;
+        font-size: 0.8125rem;
+        color: var(--color-text-soft);
+    }
+
+    .how th,
+    .how td {
+        padding: 10px 14px;
+        text-align: left;
+        border-bottom: 1px solid var(--color-divider);
+    }
+
+    .how thead th {
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.55);
+    }
+
+    .how tbody th {
+        font-weight: 600;
+    }
+
+    .how td {
+        white-space: nowrap;
+    }
+
+    .how tbody tr:last-child th,
+    .how tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+    .faq {
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--color-divider);
+        text-align: left;
+    }
+
+    .faq h2 {
+        margin: 0 0 18px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--color-text-soft);
+        text-align: center;
+    }
+
+    .faq details {
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 14px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .faq details:hover {
+        background: rgba(255, 255, 255, 0.55);
+    }
+
+    .faq details[open] {
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 6px 18px rgba(60, 60, 100, 0.08);
+    }
+
+    .faq summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px 18px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--color-text);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .faq summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq summary::after {
+        content: '+';
+        font-size: 1.4rem;
+        line-height: 1;
+        font-weight: 400;
+        color: var(--color-text-soft);
+        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        flex-shrink: 0;
+    }
+
+    .faq details[open] summary::after {
+        transform: rotate(45deg);
+        color: var(--color-link);
+    }
+
+    .faq .answer {
+        padding: 0 18px 16px;
+        color: var(--color-text-soft);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .share {
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--color-divider);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .share h2 {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--color-text-soft);
+    }
+
+    .share-icons {
+        display: flex;
+        gap: 14px;
+        margin-top: 4px;
+    }
+
+    .share-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .share-icons a:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 18px rgba(60, 60, 100, 0.18);
+    }
+
+    .share-icons img {
+        width: 28px;
+        height: 28px;
+        display: block;
+    }
+
+    a {
+        color: var(--color-link);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        margin: 0;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    a:hover {
+        color: var(--color-link-hover);
+        text-decoration: underline;
+    }
+
+    .share .made,
+    .share .updated {
+        font-size: 0.8125rem;
+        color: var(--color-text-soft);
+        margin-top: 4px;
+    }
+
+    .share .updated {
+        margin-top: -8px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        body {
+            padding: 32px 16px;
+        }
+        .aligncenter {
+            padding: 56px 24px 32px;
+        }
+        h1 {
+            font-size: 1.625rem;
+        }
+        h2 {
+            font-size: 0.9375rem;
+        }
+        #bonText {
+            font-size: 2.25rem;
+            padding: 12px 24px;
+        }
+        .corner-image {
+            width: 72px;
+            height: 72px;
+            left: -16px;
+            top: -20px;
+        }
+        .lang-switch {
+            top: 12px;
+            right: 12px;
+        }
+        .lang-switch a {
+            font-size: 0.7rem;
+            padding: 5px 10px;
+        }
+        .share {
+            margin-top: 40px;
+        }
+        .faq,
+        .how {
+            margin-top: 40px;
+            padding-top: 24px;
+        }
+        .how table {
+            font-size: 0.8125rem;
+        }
+        .how th,
+        .how td {
+            padding: 8px 10px;
+        }
+        .faq summary {
+            padding: 12px 14px;
+            font-size: 0.9rem;
+        }
+        .faq .answer {
+            padding: 0 14px 14px;
+            font-size: 0.875rem;
+        }
+    }
+  </style>
 
   <script type="application/ld+json">
   {

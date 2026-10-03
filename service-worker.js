@@ -1,7 +1,6 @@
-const CACHE_NAME = 'my-pwa-cache-v8';
+const CACHE_NAME = 'my-pwa-cache-v9';
 const urlsToCache = [
     './',
-    './index.css',
     './index.js',
     './croissant.webp',
     'assets/facebook.webp',
