@@ -82,6 +82,8 @@ async function chargerDonneesSoleil() {
   updateBonText();
 }
 
+// Affichage immédiat avec les valeurs par défaut, affiné dès que l'API répond
+updateBonText();
 chargerDonneesSoleil();
 // Rafraîchissement du texte toutes les 3 minutes (assez fin pour la zone 17h30-18h)
 setInterval(updateBonText, 3 * 60 * 1000);
@@ -94,9 +96,6 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/service-worker.js')
-      .then(registration => {
-        console.log('Service worker registered!', registration);
-      })
       .catch(error => {
         console.error('Error registering service worker:', error);
       });

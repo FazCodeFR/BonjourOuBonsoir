@@ -8,25 +8,19 @@
     "icons": [
       {
         "src": "./croissant.webp",
-        "sizes": "192x192",
+        "sizes": "96x96",
         "type": "image/webp",
         "purpose": "any"
       },
       {
-        "src": "./croissant.webp",
-        "sizes": "512x512",
-        "type": "image/webp",
+        "src": "./apple-touch-icon.png",
+        "sizes": "180x180",
+        "type": "image/png",
         "purpose": "any"
       },
       {
         "src": "./maskable_croissant.webp",
-        "sizes": "192x192",
-        "type": "image/webp",
-        "purpose": "maskable"
-      },
-      {
-        "src": "./maskable_croissant.webp",
-        "sizes": "512x512",
+        "sizes": "640x640",
         "type": "image/webp",
         "purpose": "maskable"
       }

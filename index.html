@@ -15,7 +15,6 @@
   <link rel="alternate" hreflang="fr" href="https://bonjouroubonsoir.fr/" />
   <link rel="alternate" hreflang="en" href="https://bonjouroubonsoir.fr/en/" />
   <link rel="alternate" hreflang="x-default" href="https://bonjouroubonsoir.fr/" />
-  <link rel="preload" as="image" href="./croissant.webp" fetchpriority="high" />
   <meta name="description"
     content="Faut-il dire bonjour ou bonsoir maintenant ? Réponse en temps réel selon l'heure et le coucher du soleil, basée sur les règles du savoir-vivre français." />
   <meta name="keywords"
@@ -625,11 +624,11 @@
       <a href="./" aria-current="page">FR</a>
       <a href="./en/">EN</a>
     </div>
-    <img src="./croissant.webp" class="corner-image" alt="" width="200" height="200" fetchpriority="high">
+    <img src="./croissant.webp" class="corner-image" alt="" width="96" height="96" fetchpriority="high">
     <h1>Bonjour ou bonsoir&nbsp;?</h1>
 
     <h2>À cette heure en France, il est préférable de dire&nbsp;:</h2>
-    <time><strong id="bonText">Bonjour</strong></time>
+    <div aria-live="polite"><strong id="bonText">Bonjour</strong></div>
     <p class="switch-time">Aujourd'hui à Paris, on passe à «&nbsp;bonsoir&nbsp;» à <strong id="switchTime">17h30–18h</strong>.</p>
 
     <section class="how" aria-labelledby="how-title">
